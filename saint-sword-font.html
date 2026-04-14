@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saint Sword Pvt. Ltd. — Global Industrial Sourcing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --deep: #0f1219;
+    --navy: #111827;
+    --steel: #1e2d3d;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e8c0;
+    --white: #f8f6f0;
+    --gray: #8a9bb0;
+    --muted: #4a5568;
+    --border: rgba(201,168,76,0.2);
+    --border-light: rgba(255,255,255,0.06);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--deep);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ─── PAGES ─── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    background: rgba(10,10,18,0.85);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border-light);
+    transition: all 0.4s;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    cursor: pointer;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-logo-mark {
+    width: 32px; height: 32px;
+    border: 1.5px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0;
+  }
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(248,246,240,0.65);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .nav-cta {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    border: none;
+    padding: 10px 22px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* mobile nav */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+  .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: all 0.3s; }
+  .mobile-menu {
+    display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+    background: var(--black); z-index: 999;
+    flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+    padding: 2rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--white); text-decoration: none; cursor: pointer;
+    transition: color 0.3s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+
+  /* ─── TYPOGRAPHY HELPERS ─── */
+  .display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.2rem;
+  }
+  .label::before {
+    content: '';
+    display: block; width: 32px; height: 1px;
+    background: var(--gold);
+  }
+  .gold { color: var(--gold); }
+  .italic { font-style: italic; }
+
+  /* ─── BUTTONS ─── */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    border: none; padding: 16px 32px;
+    cursor: pointer; text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s, gap 0.3s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); gap: 16px; }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--white);
+    background: transparent;
+    border: 1px solid rgba(248,246,240,0.3);
+    padding: 16px 32px;
+    cursor: pointer; text-decoration: none;
+    border-radius: 6px;
+    transition: border-color 0.3s, color 0.3s, transform 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  /* ─── SECTION LAYOUT ─── */
+  section { padding: 120px 5%; }
+  .container { max-width: 1280px; margin: 0 auto; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+  /* ─── DIVIDER ─── */
+  .gold-line {
+    width: 60px; height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 2rem 0;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.4;
+  }
+
+  /* ═══════════════════════════════════════════
+     HOME PAGE
+  ═══════════════════════════════════════════ */
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 0 5%;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(30,45,61,0.6) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 10% 80%, rgba(201,168,76,0.06) 0%, transparent 60%),
+      linear-gradient(135deg, #0a0a12 0%, #0f1828 50%, #0a0f18 100%);
+  }
+  .hero-grid-lines {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 900px;
+    padding-top: 80px;
+  }
+  .hero-eyebrow {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold);
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  .hero h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(248,246,240,0.6);
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 3rem;
+    opacity: 0; animation: fadeUp 0.9s 0.6s forwards;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.9s 0.8s forwards;
+  }
+  .hero-scroll {
+    position: relative;
+    margin-top: 2rem;
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gray);
+    opacity: 0; animation: fadeIn 1s 1.2s forwards;
+  }
+  .hero-scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+  .hero-badge {
+    position: absolute; right: 5%; bottom: 4rem;
+    width: 140px; height: 140px;
+    border: 1.5px solid rgba(201,168,76,0.5);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    gap: 4px;
+    opacity: 0; animation: fadeIn 1s 1s forwards;
+  }
+  .hero-badge-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hero-badge-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.6rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gray);
+    line-height: 1.3;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* Stats strip */
+  .stats-strip {
+    background: var(--steel);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 5%;
+  }
+  .stats-strip .container {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.4rem; font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gray);
+    display: block; margin-top: 6px;
+  }
+  .stat-divider { width: 1px; height: 48px; background: var(--border); }
+
+  /* What We Do */
+  .pillars { background: var(--black); }
+  .pillars-header { text-align: center; max-width: 680px; margin: 0 auto 5rem; }
+  .pillars-header h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+  .pillars-header p { color: rgba(248,246,240,0.55); line-height: 1.8; }
+  .pillar-card {
+    background: var(--deep);
+    border: 1px solid var(--border-light);
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.3s;
+  }
+  .pillar-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .pillar-card:hover { border-color: var(--border); transform: translateY(-4px); }
+  .pillar-card:hover::before { transform: scaleX(1); }
+  .pillar-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.8rem; font-weight: 700;
+    color: rgba(201,168,76,0.12);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .pillar-icon {
+    width: 48px; height: 48px; margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .pillar-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 1rem;
+  }
+  .pillar-card p { color: rgba(248,246,240,0.5); line-height: 1.75; font-size: 0.92rem; }
+
+  /* Why Saint Sword */
+  .why { background: var(--deep); position: relative; }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .why-content { padding-right: 5rem; }
+  .why-content h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .why-content p { color: rgba(248,246,240,0.55); line-height: 1.85; margin-bottom: 2.5rem; }
+  .why-closing {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.35rem; font-weight: 500; font-style: italic;
+    color: var(--gold); line-height: 1.6;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem; margin-top: 2rem;
+  }
+  .why-features { padding-left: 2rem; border-left: 1px solid var(--border-light); }
+  .why-feature {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+  }
+  .why-feature:last-child { border-bottom: none; }
+  .why-feature h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 0.6rem;
+  }
+  .why-feature p { color: rgba(248,246,240,0.5); font-size: 0.9rem; line-height: 1.7; }
+  .why-feature::before {
+    content: '→';
+    position: absolute; left: -2.3rem;
+    color: var(--gold); font-size: 0.85rem;
+    top: 2rem;
+  }
+
+  /* What We Source */
+  .source-section { background: var(--navy); }
+  .source-header { margin-bottom: 4rem; }
+  .source-header h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .source-header p { color: rgba(248,246,240,0.5); font-size: 0.92rem; font-style: italic; }
+  .source-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-light);
+    padding: 2.5rem;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: default;
+  }
+  .source-card:hover { background: rgba(201,168,76,0.05); border-color: var(--border); }
+  .source-icon { font-size: 2rem; margin-bottom: 1.5rem; display: block; }
+  .source-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 0.75rem;
+  }
+  .source-card p { color: rgba(248,246,240,0.5); font-size: 0.88rem; line-height: 1.7; }
+  .source-tag {
+    display: inline-flex; align-items: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    margin-top: 1.5rem;
+  }
+
+  /* Process */
+  .process { background: var(--black); }
+  .process-header { text-align: center; margin-bottom: 5rem; }
+  .process-header h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 0; position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 28px; left: 8%; right: 8%;
+    height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .process-step { text-align: center; padding: 0 1rem; }
+  .step-num {
+    width: 56px; height: 56px;
+    border: 1.5px solid rgba(201,168,76,0.6);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    background: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--gold);
+    position: relative; z-index: 1;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .process-step:hover .step-num {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+  }
+  .process-step h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 0.75rem;
+  }
+  .process-step p { color: rgba(248,246,240,0.4); font-size: 0.8rem; line-height: 1.6; }
+
+  /* Bridge */
+  .bridge { background: var(--steel); position: relative; overflow: hidden; }
+  .bridge::before {
+    content: '';
+    position: absolute; right: -10%; top: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .bridge h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 1.5rem; max-width: 700px;
+  }
+  .bridge p { color: rgba(248,246,240,0.55); line-height: 1.85; max-width: 680px; margin-bottom: 3rem; }
+  .bridge-items {
+    display: flex; flex-direction: column; gap: 1rem; max-width: 600px;
+  }
+  .bridge-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid var(--border-light);
+    background: rgba(255,255,255,0.02);
+  }
+  .bridge-item-icon { color: var(--gold); font-size: 1rem; margin-top: 2px; flex-shrink: 0; }
+  .bridge-item p { color: rgba(248,246,240,0.65); font-size: 0.92rem; line-height: 1.6; }
+
+  /* Partnership */
+  .partners { background: var(--deep); }
+  .partners h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 3.5rem; text-align: center;
+  }
+  .partner-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .partner-card {
+    border: 1px solid var(--border-light);
+    padding: 3.5rem 3rem;
+    position: relative; overflow: hidden;
+    transition: border-color 0.4s;
+  }
+  .partner-card:hover { border-color: var(--border); }
+  .partner-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .partner-type {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .partner-type::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .partner-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.9rem; font-weight: 400;
+    color: var(--white); margin-bottom: 1.2rem;
+  }
+  .partner-card p { color: rgba(248,246,240,0.5); line-height: 1.8; font-size: 0.95rem; }
+
+  /* CTA Band */
+  .cta-band {
+    background: linear-gradient(135deg, #0f1219 0%, #1a2a1a 50%, #0f1219 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 100px 5%;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-band h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 1rem; position: relative;
+  }
+  .cta-band p { color: rgba(248,246,240,0.55); margin-bottom: 3rem; font-size: 1.05rem; position: relative; }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+  /* ═══════════════════════════════════════════
+     ABOUT PAGE
+  ═══════════════════════════════════════════ */
+  .about-hero {
+    min-height: 65vh;
+    display: flex; align-items: flex-end;
+    padding: 8rem 5% 5rem;
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 30%, rgba(30,45,61,0.5) 0%, transparent 70%),
+      linear-gradient(135deg, #0a0a12 0%, #0f1828 100%);
+    position: relative; overflow: hidden;
+  }
+  .about-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .about-hero-content { position: relative; z-index: 2; }
+  .about-hero h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 400; color: var(--white);
+    line-height: 1.05; margin-bottom: 1.5rem;
+  }
+  .about-hero p {
+    font-size: 1.05rem; font-weight: 300;
+    color: rgba(248,246,240,0.55); max-width: 560px;
+    line-height: 1.8;
+  }
+  .about-story { background: var(--black); }
+  .about-story-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 6rem; align-items: start;
+  }
+  .about-story-side h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.2rem; font-weight: 400;
+    color: var(--white); line-height: 1.2; margin-bottom: 1.5rem;
+  }
+  .about-story-side .positioning {
+    border-left: 2px solid var(--gold);
+    padding: 1.5rem 2rem;
+    background: rgba(201,168,76,0.04);
+    margin-top: 2.5rem;
+  }
+  .about-story-side .positioning p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 300; font-style: italic;
+    color: var(--gold); line-height: 1.6;
+  }
+  .about-story-main p {
+    color: rgba(248,246,240,0.6); line-height: 1.9;
+    margin-bottom: 1.8rem; font-size: 0.98rem;
+  }
+  .about-story-main p:last-child { margin-bottom: 0; }
+
+  /* Vision */
+  .vision-section {
+    background: var(--deep);
+    border-top: 1px solid var(--border-light);
+  }
+  .vision-section h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .vision-section p {
+    color: rgba(248,246,240,0.6); line-height: 1.85; max-width: 720px;
+    font-size: 1rem;
+  }
+  .vision-section blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 300; font-style: italic;
+    color: var(--white);
+    border-left: 2px solid var(--gold);
+    padding-left: 2rem; margin: 3rem 0;
+    line-height: 1.4; max-width: 800px;
+  }
+
+  /* Founder */
+  .founder-section { background: var(--navy); }
+  .founder-grid {
+    display: grid; grid-template-columns: 1fr 2fr;
+    gap: 5rem; align-items: start;
+  }
+  .founder-visual {
+    position: relative;
+  }
+  .founder-frame {
+    aspect-ratio: 3/4; max-width: 300px;
+    background: linear-gradient(135deg, var(--steel), var(--navy));
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300;
+    color: rgba(201,168,76,0.3);
+    position: relative; overflow: hidden;
+  }
+  .founder-frame::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(201,168,76,0.1), transparent);
+  }
+  .founder-name-plate {
+    position: absolute; bottom: -1px; left: 0; right: 0;
+    background: var(--gold);
+    padding: 12px 20px;
+  }
+  .founder-name-plate h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--black);
+  }
+  .founder-name-plate span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem; color: rgba(10,10,10,0.65);
+    display: block; margin-top: 2px;
+  }
+  .founder-content h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .founder-content p {
+    color: rgba(248,246,240,0.6); line-height: 1.9;
+    margin-bottom: 1.5rem; font-size: 0.98rem;
+  }
+
+  /* ═══════════════════════════════════════════
+     SERVICES PAGE
+  ═══════════════════════════════════════════ */
+  .services-hero {
+    min-height: 55vh;
+    display: flex; align-items: flex-end;
+    padding: 8rem 5% 5rem;
+    background: linear-gradient(135deg, #0a0a12 0%, #0f1828 100%);
+    position: relative;
+  }
+  .services-hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--black));
+    pointer-events: none;
+  }
+  .services-hero h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 400; color: var(--white);
+    line-height: 1.05; position: relative; z-index: 2;
+    margin-bottom: 1.5rem;
+  }
+  .services-hero p {
+    color: rgba(248,246,240,0.5); font-size: 1.05rem;
+    max-width: 540px; line-height: 1.8; position: relative; z-index: 2;
+  }
+
+  .service-block { background: var(--black); }
+  .service-block:nth-child(even) { background: var(--deep); }
+  .service-item {
+    display: grid; grid-template-columns: 1fr 1.5fr;
+    gap: 5rem; align-items: start;
+    max-width: 1280px; margin: 0 auto;
+    padding: 100px 5%;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .service-item:last-child { border-bottom: none; }
+  .service-item.reverse { direction: rtl; }
+  .service-item.reverse > * { direction: ltr; }
+  .service-meta { padding-top: 0.5rem; }
+  .service-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 3.5rem; font-weight: 700;
+    color: rgba(201,168,76,0.1);
+    line-height: 1; display: block; margin-bottom: 1rem;
+  }
+  .service-meta h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 400; color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .service-meta p {
+    color: rgba(248,246,240,0.5); line-height: 1.8; font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+  .service-list { list-style: none; }
+  .service-list li {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light);
+    color: rgba(248,246,240,0.6); font-size: 0.92rem;
+  }
+  .service-list li::before {
+    content: '—'; color: var(--gold); flex-shrink: 0; font-size: 0.7rem;
+  }
+  .service-visual {
+    background: linear-gradient(135deg, var(--steel), var(--navy));
+    border: 1px solid var(--border-light);
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem; font-weight: 300;
+    color: rgba(201,168,76,0.15);
+    position: relative; overflow: hidden;
+  }
+  .service-visual::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ═══════════════════════════════════════════
+     PRODUCTS PAGE
+  ═══════════════════════════════════════════ */
+  .products-hero {
+    min-height: 55vh;
+    display: flex; align-items: flex-end;
+    padding: 8rem 5% 5rem;
+    background: linear-gradient(135deg, #0a0a12 0%, #0f1828 100%);
+    position: relative;
+  }
+  .products-hero h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 400; color: var(--white);
+    line-height: 1.05; margin-bottom: 1.5rem;
+  }
+  .products-hero p {
+    color: rgba(248,246,240,0.5); font-size: 1.05rem;
+    max-width: 540px; line-height: 1.8;
+  }
+
+  .products-grid { background: var(--black); }
+  .products-intro {
+    text-align: center; max-width: 680px;
+    margin: 0 auto 5rem;
+  }
+  .products-intro h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 400; color: var(--white); margin-bottom: 1rem;
+  }
+  .products-intro p { color: rgba(248,246,240,0.5); line-height: 1.8; }
+
+  .product-category {
+    border: 1px solid var(--border-light);
+    margin-bottom: 2px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .product-category:hover { border-color: var(--border); }
+  .product-cat-header {
+    display: grid; grid-template-columns: 60px 1fr auto;
+    align-items: center; gap: 2rem;
+    padding: 2.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .product-cat-header:hover { background: rgba(255,255,255,0.02); }
+  .product-cat-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: rgba(201,168,76,0.25); line-height: 1;
+  }
+  .product-cat-title h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 0.4rem;
+  }
+  .product-cat-title p { color: var(--gray); font-size: 0.85rem; }
+  .product-cat-arrow {
+    color: var(--gold); font-size: 1.2rem;
+    transition: transform 0.3s;
+  }
+  .product-category.open .product-cat-arrow { transform: rotate(90deg); }
+  .product-cat-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease;
+    border-top: 1px solid transparent;
+  }
+  .product-category.open .product-cat-body {
+    max-height: 500px;
+    border-top-color: var(--border-light);
+  }
+  .product-tags {
+    padding: 2rem 2.5rem 2.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+  }
+  .product-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(248,246,240,0.6);
+    border: 1px solid var(--border-light);
+    padding: 8px 16px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .product-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  .products-note {
+    background: var(--steel);
+    padding: 80px 5%;
+    text-align: center;
+  }
+  .products-note h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400; color: var(--white); margin-bottom: 1rem;
+  }
+  .products-note p { color: rgba(248,246,240,0.5); max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.8; }
+
+  /* ═══════════════════════════════════════════
+     CONTACT PAGE
+  ═══════════════════════════════════════════ */
+  .contact-page {
+    background: var(--black);
+    min-height: 100vh;
+    padding: 140px 5% 100px;
+  }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 6rem; max-width: 1280px; margin: 0 auto; align-items: start;
+  }
+  .contact-info h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400; color: var(--white);
+    line-height: 1.1; margin-bottom: 1.2rem;
+  }
+  .contact-info p {
+    color: rgba(248,246,240,0.5); line-height: 1.85;
+    margin-bottom: 3rem; font-size: 1rem;
+  }
+  .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 1.2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .contact-detail:last-child { border-bottom: none; }
+  .detail-icon {
+    width: 40px; height: 40px; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; color: var(--gold); font-size: 0.9rem;
+  }
+  .detail-text h5 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 4px;
+  }
+  .detail-text p { color: rgba(248,246,240,0.6); font-size: 0.92rem; }
+
+  .contact-form-wrap {
+    background: var(--deep);
+    border: 1px solid var(--border-light);
+    padding: 3.5rem;
+  }
+  .contact-form-wrap h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2.5rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .contact-form-wrap h3::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.5rem; }
+  .form-group label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.76rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 0.65rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-light);
+    padding: 14px 16px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    outline: none;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    -webkit-appearance: none;
+  }
+  .form-group select { cursor: pointer; }
+  .form-group select option { background: var(--deep); color: var(--white); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(248,246,240,0.35);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+  }
+  .form-submit {
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    border: none; padding: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+  .form-success {
+    display: none;
+    text-align: center; padding: 3rem;
+  }
+  .form-success h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .form-success p { color: rgba(248,246,240,0.55); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border-light);
+    padding: 4rem 5% 2rem;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 4rem;
+    max-width: 1280px; margin-left: auto; margin-right: auto;
+  }
+  .footer-brand { }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 1rem; display: block;
+    cursor: pointer;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-brand p {
+    color: rgba(248,246,240,0.4); font-size: 0.88rem;
+    line-height: 1.75; max-width: 280px; margin-bottom: 1.5rem;
+  }
+  .footer-col h5 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-col ul li a {
+    color: rgba(248,246,240,0.45); font-size: 0.88rem;
+    text-decoration: none; cursor: pointer;
+    transition: color 0.3s;
+  }
+  .footer-col ul li a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid var(--border-light);
+    padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .footer-bottom p { color: rgba(248,246,240,0.25); font-size: 0.78rem; }
+  .footer-reg { color: rgba(248,246,240,0.25); font-size: 0.72rem; font-family: 'Syne', sans-serif; letter-spacing: 0.1em; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+    .process-steps::before { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-features { padding-left: 0; border-left: none; border-top: 1px solid var(--border-light); padding-top: 3rem; }
+    .why-content { padding-right: 0; }
+    .founder-grid { grid-template-columns: 1fr; }
+    .founder-frame { max-width: 200px; }
+    .service-item { grid-template-columns: 1fr; }
+    .service-item.reverse { direction: ltr; }
+    .partner-cards { grid-template-columns: 1fr; }
+    .about-story-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 80px 5%; }
+    .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .hero-badge { display: none; }
+    .stat-divider { display: none; }
+    .stats-strip .container { justify-content: center; gap: 3rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-mark">SS</div>
+    Saint <span>Sword</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home', event)" class="active" id="nav-home">Home</a></li>
+    <li><a href="#" onclick="showPage('about', event)" id="nav-about">About Us</a></li>
+    <li><a href="#" onclick="showPage('services', event)" id="nav-services">Services</a></li>
+    <li><a href="#" onclick="showPage('products', event)" id="nav-products">Products</a></li>
+    <li><a href="#" onclick="showPage('contact', event)" id="nav-contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="showPage('contact')">Get in Touch</button>
+  <div class="hamburger" onclick="toggleMobile()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('home', event);toggleMobile()">Home</a>
+  <a href="#" onclick="showPage('about', event);toggleMobile()">About Us</a>
+  <a href="#" onclick="showPage('services', event);toggleMobile()">Services</a>
+  <a href="#" onclick="showPage('products', event);toggleMobile()">Products</a>
+  <a href="#" onclick="showPage('contact', event);toggleMobile()">Contact</a>
+</div>
+
+<!-- ═══════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Global Industrial Sourcing · India Market Intelligence</div>
+      <h1>Where Global Supply<br>Meets <em>Strategic</em><br>Execution.</h1>
+      <p class="hero-sub">Saint Sword enables businesses to access specialized equipment, machinery, and industrial inputs from global markets — while bridging supply with execution through deep EPC integration.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('services')">Explore Capabilities →</button>
+        <button class="btn-outline" onclick="showPage('contact')">Partner With Us</button>
+      </div>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        Scroll to Discover
+      </div>
+    </div>
+    <div class="hero-badge">
+      <span class="hero-badge-num">360°</span>
+      <span class="hero-badge-text">Sourcing to<br>Delivery</span>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stat-item">
+        <span class="stat-num">Global</span>
+        <span class="stat-label">Manufacturer Access</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">4+</span>
+        <span class="stat-label">Industrial Categories</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">EPC</span>
+        <span class="stat-label">Backed Delivery</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">India</span>
+        <span class="stat-label">Market Intelligence</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- What We Do -->
+  <section class="pillars">
+    <div class="container">
+      <div class="pillars-header">
+        <div class="label">What We Do</div>
+        <h2>From Global Supply to<br><em>On-Ground Execution</em></h2>
+        <p>Saint Sword operates at the intersection of global sourcing, industrial trade, and market access — going beyond procurement to enable end-to-end industrial delivery.</p>
+      </div>
+      <div class="grid-3">
+        <div class="pillar-card">
+          <span class="pillar-num">01</span>
+          <div class="pillar-icon">⚙</div>
+          <h3>Industrial Sourcing</h3>
+          <p>Direct access to verified manufacturers across China and global markets. No unnecessary layers, no hidden markups — just the right supplier at the right price.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-num">02</span>
+          <div class="pillar-icon">◈</div>
+          <h3>Strategic Trade Execution</h3>
+          <p>Commercial structuring, supplier negotiation, and end-to-end transaction management. We protect your interests through every stage of the deal.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-num">03</span>
+          <div class="pillar-icon">▲</div>
+          <h3>Market Access & EPC Integration</h3>
+          <p>Seamless transition from sourcing to project execution through aligned EPC capabilities. We don't just deliver goods — we deliver outcomes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Saint Sword -->
+  <section class="why">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-content">
+          <div class="label">Why Saint Sword</div>
+          <h2>Not a Middleman.<br>A Strategic <em>Advantage.</em></h2>
+          <p>In a landscape crowded with brokers and intermediaries, Saint Sword functions as a strategic layer — combining sourcing intelligence, commercial discipline, and execution capability to create measurable advantage for our partners.</p>
+          <p>We understand India's regulatory, commercial, and operational landscape — and we combine that knowledge with direct manufacturer relationships to unlock value that others simply cannot.</p>
+          <div class="why-closing">
+            We don't just move goods — we enable decisions, deals, and delivery.
+          </div>
+        </div>
+        <div class="why-features">
+          <div class="why-feature">
+            <h4>Direct Manufacturer Access</h4>
+            <p>We eliminate unnecessary layers and hidden markups, connecting you directly with the right manufacturers at globally competitive prices.</p>
+          </div>
+          <div class="why-feature">
+            <h4>Aggregation-Driven Pricing</h4>
+            <p>Unlock bulk pricing advantages across multiple clients and categories — a structural cost advantage that solo procurement simply cannot achieve.</p>
+          </div>
+          <div class="why-feature">
+            <h4>Execution-Linked Supply</h4>
+            <p>Our sourcing is backed by real project delivery capability. Every purchase order is designed with project execution in mind.</p>
+          </div>
+          <div class="why-feature">
+            <h4>India Market Intelligence</h4>
+            <p>Built natively for India's unique regulatory, commercial, and operational environment — no adaptation lag, no compliance surprises.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Source -->
+  <section class="source-section">
+    <div class="container">
+      <div class="source-header">
+        <div class="label">What We Source</div>
+        <h2>Specialized Industrial<br><em>Categories</em></h2>
+        <p>Focused on high-value, niche, and margin-accretive categories where specialized expertise creates a decisive edge.</p>
+      </div>
+      <div class="grid-4">
+        <div class="source-card">
+          <span class="source-icon">⚙️</span>
+          <h3>Industrial Equipment & Machinery</h3>
+          <p>Heavy-duty and specialized machinery across manufacturing, processing, and infrastructure sectors.</p>
+          <div class="source-tag">Core Category</div>
+        </div>
+        <div class="source-card">
+          <span class="source-icon">🌿</span>
+          <h3>Emission Control & Environmental Systems</h3>
+          <p>Advanced environmental compliance systems for industrial facilities and large-scale operations.</p>
+          <div class="source-tag">Growing Demand</div>
+        </div>
+        <div class="source-card">
+          <span class="source-icon">🧪</span>
+          <h3>Specialty Chemicals & Materials</h3>
+          <p>High-performance industrial chemicals, composites, and specialty materials for niche applications.</p>
+          <div class="source-tag">High Value</div>
+        </div>
+        <div class="source-card">
+          <span class="source-icon">🏗️</span>
+          <h3>Process & Infrastructure Components</h3>
+          <p>Critical components for industrial process infrastructure, from valves to structural systems.</p>
+          <div class="source-tag">EPC-Linked</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process">
+    <div class="container">
+      <div class="process-header">
+        <div class="label" style="justify-content:center">Our Process</div>
+        <h2>From Requirement to <em>Delivery</em></h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <h4>Requirement Mapping</h4>
+          <p>Deep-dive into your technical and commercial requirements to define the sourcing brief.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <h4>Supplier Identification</h4>
+          <p>We identify and shortlist verified global manufacturers with proven capability.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <h4>Commercial Structuring</h4>
+          <p>Negotiate pricing, payment terms, and contractual protections on your behalf.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <h4>Quality Validation</h4>
+          <p>Factory inspections and quality assurance before goods leave the source country.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">05</div>
+          <h4>Logistics & Compliance</h4>
+          <p>End-to-end shipping coordination, import compliance, and documentation management.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">06</div>
+          <h4>Delivery & Integration</h4>
+          <p>Final mile delivery and seamless integration with your project or facility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bridge -->
+  <section class="bridge">
+    <div class="container">
+      <div class="label">The India Advantage</div>
+      <h2>Connecting Global Capability<br>with <em>India's Demand</em></h2>
+      <p>India is one of the fastest-growing industrial markets globally — yet remains structurally dependent on imported technologies and specialized products. Saint Sword acts as the bridge, unlocking access in both directions.</p>
+      <div class="bridge-items">
+        <div class="bridge-item">
+          <span class="bridge-item-icon">→</span>
+          <p><strong style="color:var(--white)">Global manufacturers</strong> gain a trusted, intelligent gateway into the Indian market with regulatory support and customer access.</p>
+        </div>
+        <div class="bridge-item">
+          <span class="bridge-item-icon">→</span>
+          <p><strong style="color:var(--white)">Indian businesses</strong> access global supply chains with speed, cost-efficiency, and operational reliability.</p>
+        </div>
+        <div class="bridge-item">
+          <span class="bridge-item-icon">→</span>
+          <p><strong style="color:var(--white)">Projects move faster</strong> through our EPC-linked sourcing model, eliminating the gap between supply and execution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnership -->
+  <section class="partners">
+    <div class="container">
+      <div class="label" style="justify-content:center">Partnerships</div>
+      <h2>Built for <em>Long-Term</em> Partnerships</h2>
+      <div class="partner-cards">
+        <div class="partner-card">
+          <div class="partner-type">For Global Manufacturers</div>
+          <h3>Enter & Scale<br>in India</h3>
+          <p>Leverage our deep India market intelligence, established relationships, and commercial expertise to establish and grow your presence in one of the world's most dynamic industrial markets — through a partner you can trust.</p>
+        </div>
+        <div class="partner-card">
+          <div class="partner-type">For Indian Businesses</div>
+          <h3>Access World-Class<br>Global Supply</h3>
+          <p>Unlock access to the world's best manufacturers with the commercial protection, quality assurance, and logistical expertise that makes global sourcing reliable, cost-effective, and genuinely competitive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="label" style="justify-content:center">Ready to Begin?</div>
+      <h2>Build Your Global<br>Supply Advantage.</h2>
+      <p>Whether you're sourcing globally or entering India — we enable both. Every partnership starts with a conversation.</p>
+      <div class="cta-btns">
+        <button class="btn-primary" onclick="showPage('contact')">Start a Conversation →</button>
+        <button class="btn-outline" onclick="showPage('contact')">Explore Partnerships</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     ABOUT PAGE
+════════════════════════════════════════ -->
+<div class="page" id="page-about">
+
+  <div class="about-hero">
+    <div class="about-hero-grid"></div>
+    <div class="about-hero-content container">
+      <div class="label">About Saint Sword</div>
+      <h1>Building the Infrastructure<br>Behind <em>Global Trade</em></h1>
+      <p>We were founded to solve a fundamental problem in industrial trade — access without friction. Delivering structure, reliability, and intelligence to the space between global supply and Indian demand.</p>
+    </div>
+  </div>
+
+  <section class="about-story">
+    <div class="container">
+      <div class="about-story-grid">
+        <div class="about-story-side">
+          <div class="label">Our Story</div>
+          <h3>The Problem<br>We Were <em>Built to Solve</em></h3>
+          <div class="positioning">
+            <p>We are not traders.<br>We are industrial deal-makers and market builders.</p>
+          </div>
+        </div>
+        <div class="about-story-main">
+          <p>While global manufacturing ecosystems are vast, the pathways that connect Indian businesses to the right suppliers — at the right price, with the right protections — remain fragmented and opaque. Intermediary layers inflate costs. Lack of local intelligence creates risk. And the gap between sourcing a product and integrating it into a live project is rarely addressed by any single partner.</p>
+          <p>Saint Sword was built to close that gap. We bring structure, intelligence, and execution capability to industrial procurement — acting as a strategic layer between global supply and Indian demand, rather than just another link in the chain.</p>
+          <p>We go beyond standard trading. Our model combines manufacturer-direct sourcing with deep commercial structuring and EPC-aligned delivery capability — enabling our partners to source smarter, move faster, and execute with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vision-section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <div class="label">Our Vision</div>
+          <h2>A Globally Connected<br>Industrial <em>Platform</em></h2>
+          <p>We are building toward a future where Saint Sword controls access, pricing, and execution across industrial markets — functioning not as a service provider, but as a critical strategic infrastructure layer for businesses that operate at scale.</p>
+          <p style="margin-top:1.5rem;">This means deepening our manufacturer relationships, expanding our India market intelligence, and strengthening our EPC partnerships to deliver an end-to-end capability that no traditional trader can match.</p>
+        </div>
+        <div style="display:flex;align-items:center;">
+          <blockquote>
+            "To build a globally connected industrial platform that controls access, pricing, and execution across markets."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-section">
+    <div class="container">
+      <div class="founder-grid">
+        <div class="founder-visual">
+          <div class="founder-frame">RT</div>
+          <div class="founder-name-plate">
+            <h4>Raahil Talwar</h4>
+            <span>Founder & Director, Saint Sword Pvt. Ltd.</span>
+          </div>
+        </div>
+        <div class="founder-content">
+          <div class="label">Leadership</div>
+          <h2>The Mind Behind<br><em>Saint Sword</em></h2>
+          <p>Raahil Talwar leads Saint Sword with a focused mandate: to build a globally integrated industrial platform that combines sourcing intelligence, commercial strategy, and execution capability to unlock high-value opportunities across markets.</p>
+          <p>His approach to industrial trade is fundamentally different from conventional sourcing — treating every engagement as a strategic opportunity to create structural advantage for partners on both sides of the supply chain. Where others see transactions, Raahil sees platforms for long-term value creation.</p>
+          <p>Under his leadership, Saint Sword has been positioned at the high-value intersection of global procurement, commercial structuring, and EPC-linked delivery — a combination that few operators in this space can credibly offer.</p>
+          <div style="margin-top:2.5rem;">
+            <button class="btn-primary" onclick="showPage('contact')">Connect with Raahil →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <h2>Ready to Build<br><em>Together?</em></h2>
+      <p>Whether you're a global manufacturer seeking India entry or an Indian business seeking global supply — let's talk.</p>
+      <div class="cta-btns">
+        <button class="btn-primary" onclick="showPage('contact')">Start a Conversation →</button>
+        <button class="btn-outline" onclick="showPage('services')">Explore Our Services</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     SERVICES PAGE
+════════════════════════════════════════ -->
+<div class="page" id="page-services">
+
+  <div class="services-hero">
+    <div class="container" style="position:relative;z-index:2">
+      <div class="label">Our Capabilities</div>
+      <h1>What We <em>Do</em></h1>
+      <p>Four integrated capabilities, designed to move seamlessly from requirement to delivery — across geographies, categories, and project scales.</p>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-item">
+      <div class="service-meta">
+        <span class="service-num">01</span>
+        <div class="label">Core Capability</div>
+        <h2>Global Industrial Sourcing</h2>
+        <p>We identify, validate, and engage the right manufacturers for your specific industrial requirement — across China and global markets — with speed, precision, and commercial intelligence.</p>
+        <ul class="service-list">
+          <li>Supplier identification and market mapping</li>
+          <li>Factory visits and on-ground validation</li>
+          <li>Competitive price negotiation</li>
+          <li>Sample procurement and technical review</li>
+          <li>Manufacturer relationship management</li>
+        </ul>
+      </div>
+      <div class="service-visual">⚙</div>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-item reverse">
+      <div class="service-meta">
+        <span class="service-num">02</span>
+        <div class="label">Commercial Layer</div>
+        <h2>Trading & Commercial Structuring</h2>
+        <p>Beyond sourcing, we manage the commercial architecture of every deal — ensuring that pricing, payment terms, and contractual frameworks are structured in your best interest.</p>
+        <ul class="service-list">
+          <li>Deal negotiation and term structuring</li>
+          <li>Contract drafting and review support</li>
+          <li>Risk identification and mitigation</li>
+          <li>Payment terms and LC management</li>
+          <li>Multi-party commercial coordination</li>
+        </ul>
+      </div>
+      <div class="service-visual">◈</div>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-item">
+      <div class="service-meta">
+        <span class="service-num">03</span>
+        <div class="label">Logistics & Compliance</div>
+        <h2>Supply Chain Execution</h2>
+        <p>From factory floor to project site, we manage the full execution pipeline — coordinating logistics, navigating import compliance, and ensuring on-time, intact delivery.</p>
+        <ul class="service-list">
+          <li>Freight coordination — sea and air</li>
+          <li>Import documentation and compliance</li>
+          <li>Customs clearance management</li>
+          <li>Last-mile delivery coordination</li>
+          <li>Quality inspection at source</li>
+        </ul>
+      </div>
+      <div class="service-visual">▲</div>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-item reverse">
+      <div class="service-meta">
+        <span class="service-num">04</span>
+        <div class="label">India Market Entry</div>
+        <h2>Market Access (India)</h2>
+        <p>For global manufacturers, we provide the local intelligence, customer access, and commercial support needed to establish a meaningful, scalable presence in the Indian industrial market.</p>
+        <ul class="service-list">
+          <li>India market entry strategy</li>
+          <li>Customer identification and introductions</li>
+          <li>Regulatory and compliance guidance</li>
+          <li>EPC partner integration</li>
+          <li>Ongoing commercial representation</li>
+        </ul>
+      </div>
+      <div class="service-visual">◉</div>
+    </div>
+  </div>
+
+  <section class="cta-band">
+    <div class="container">
+      <h2>Need a Specific<br><em>Capability?</em></h2>
+      <p>Every engagement is tailored. Tell us your requirement and we'll structure the right solution.</p>
+      <div class="cta-btns">
+        <button class="btn-primary" onclick="showPage('contact')">Discuss Your Requirement →</button>
+        <button class="btn-outline" onclick="showPage('products')">View Product Categories</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     PRODUCTS PAGE
+════════════════════════════════════════ -->
+<div class="page" id="page-products">
+
+  <div class="products-hero">
+    <div class="container" style="position:relative;z-index:2">
+      <div class="label">Industrial Categories</div>
+      <h1>What We <em>Source</em></h1>
+      <p>We focus on specialized, high-value industrial categories where deep expertise and direct manufacturer relationships create genuine competitive advantage.</p>
+    </div>
+  </div>
+
+  <section class="products-grid">
+    <div class="container">
+      <div class="products-intro">
+        <div class="label" style="justify-content:center">Our Sourcing Scope</div>
+        <h2>Specialized. Niche. <em>Margin-Accretive.</em></h2>
+        <p>Saint Sword focuses exclusively on industrial categories where specialized knowledge, supplier relationships, and sourcing discipline create measurable value — not commodity trading.</p>
+      </div>
+
+      <div class="product-category open" onclick="toggleCategory(this)">
+        <div class="product-cat-header">
+          <span class="product-cat-num">01</span>
+          <div class="product-cat-title">
+            <h3>Industrial Equipment & Machinery</h3>
+            <p>Heavy-duty processing and manufacturing equipment</p>
+          </div>
+          <span class="product-cat-arrow">→</span>
+        </div>
+        <div class="product-cat-body">
+          <div class="product-tags">
+            <span class="product-tag">Crushing & Grinding Equipment</span>
+            <span class="product-tag">Conveyors & Material Handling</span>
+            <span class="product-tag">Industrial Pumps & Compressors</span>
+            <span class="product-tag">Heat Exchangers</span>
+            <span class="product-tag">Mixing & Blending Systems</span>
+            <span class="product-tag">Filtration Equipment</span>
+            <span class="product-tag">Reactor Vessels</span>
+            <span class="product-tag">Industrial Dryers</span>
+            <span class="product-tag">Boilers & Pressure Vessels</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-category" onclick="toggleCategory(this)">
+        <div class="product-cat-header">
+          <span class="product-cat-num">02</span>
+          <div class="product-cat-title">
+            <h3>Emission Control & Environmental Systems</h3>
+            <p>Advanced environmental compliance and air quality management</p>
+          </div>
+          <span class="product-cat-arrow">→</span>
+        </div>
+        <div class="product-cat-body">
+          <div class="product-tags">
+            <span class="product-tag">Electrostatic Precipitators (ESP)</span>
+            <span class="product-tag">Bag Filter Systems</span>
+            <span class="product-tag">Wet Scrubbers</span>
+            <span class="product-tag">Selective Catalytic Reduction (SCR)</span>
+            <span class="product-tag">Flue Gas Desulfurization</span>
+            <span class="product-tag">De-NOx Systems</span>
+            <span class="product-tag">Industrial Cyclones</span>
+            <span class="product-tag">Activated Carbon Systems</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-category" onclick="toggleCategory(this)">
+        <div class="product-cat-header">
+          <span class="product-cat-num">03</span>
+          <div class="product-cat-title">
+            <h3>Specialty Chemicals & Materials</h3>
+            <p>High-performance industrial chemicals, composites, and advanced materials</p>
+          </div>
+          <span class="product-cat-arrow">→</span>
+        </div>
+        <div class="product-cat-body">
+          <div class="product-tags">
+            <span class="product-tag">Industrial Catalysts</span>
+            <span class="product-tag">Specialty Polymers & Resins</span>
+            <span class="product-tag">Activated Alumina & Silica Gel</span>
+            <span class="product-tag">Zeolites & Molecular Sieves</span>
+            <span class="product-tag">Corrosion Inhibitors</span>
+            <span class="product-tag">Advanced Composites</span>
+            <span class="product-tag">High-Performance Coatings</span>
+            <span class="product-tag">Industrial Lubricants & Additives</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-category" onclick="toggleCategory(this)">
+        <div class="product-cat-header">
+          <span class="product-cat-num">04</span>
+          <div class="product-cat-title">
+            <h3>Process & Infrastructure Components</h3>
+            <p>Critical components for industrial process and facility infrastructure</p>
+          </div>
+          <span class="product-cat-arrow">→</span>
+        </div>
+        <div class="product-cat-body">
+          <div class="product-tags">
+            <span class="product-tag">Industrial Valves & Actuators</span>
+            <span class="product-tag">Instrumentation & Control Systems</span>
+            <span class="product-tag">Structural Steel & Fabrications</span>
+            <span class="product-tag">Process Piping Systems</span>
+            <span class="product-tag">Electrical Switchgear & Panels</span>
+            <span class="product-tag">Insulation Systems</span>
+            <span class="product-tag">Safety & Relief Equipment</span>
+            <span class="product-tag">Refractory Materials</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="products-note">
+    <div class="container" style="text-align:center">
+      <div class="label" style="justify-content:center">Custom Requirements</div>
+      <h3>Don't See Your Category?<br><em>That's exactly when you should call us.</em></h3>
+      <p>Our sourcing capability extends beyond these categories. If it's manufactured at industrial scale — we can likely source it. Tell us your requirement and we'll do the rest.</p>
+      <button class="btn-primary" onclick="showPage('contact')">Discuss Your Requirement →</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     CONTACT PAGE
+════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="contact-page">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="label">Get in Touch</div>
+        <h1>Let's Build <em>Together.</em></h1>
+        <p>Every partnership starts with a conversation. Whether you have a specific requirement in mind or want to explore what a relationship with Saint Sword could look like — we're ready to listen.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="detail-icon">✉</div>
+            <div class="detail-text">
+              <h5>Email</h5>
+              <p>partnerships@saintsword.in</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="detail-icon">📱</div>
+            <div class="detail-text">
+              <h5>WhatsApp / Phone</h5>
+              <p>Available on request</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="detail-icon">📍</div>
+            <div class="detail-text">
+              <h5>Registered Office</h5>
+              <p>India (Operating globally)</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="detail-icon">⏱</div>
+            <div class="detail-text">
+              <h5>Response Time</h5>
+              <p>We respond to all enquiries within 24 business hours</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h3>Send an Enquiry</h3>
+        <div id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" id="f-name" placeholder="Full name">
+            </div>
+            <div class="form-group">
+              <label>Company *</label>
+              <input type="text" id="f-company" placeholder="Company name">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" id="f-email" placeholder="you@company.com">
+            </div>
+            <div class="form-group">
+              <label>WhatsApp Number</label>
+              <input type="tel" id="f-whatsapp" placeholder="+91 XXXXX XXXXX">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Enquiry Type</label>
+            <select id="f-type">
+              <option value="">Select an option</option>
+              <option>Industrial Sourcing Requirement</option>
+              <option>Trading & Commercial Structuring</option>
+              <option>India Market Entry (Global Manufacturers)</option>
+              <option>Supply Chain & Logistics</option>
+              <option>Partnership Exploration</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Your Requirement</label>
+            <textarea id="f-message" placeholder="Describe your requirement, product category, estimated volumes, and any other relevant details..."></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">Send Enquiry →</button>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <h4>Message Received.</h4>
+          <p>Thank you for reaching out to Saint Sword. We'll review your enquiry and respond within 24 business hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo" onclick="showPage('home')">Saint <span>Sword</span></span>
+      <p>Global industrial sourcing, strategic trade execution, and market access for India's growing industrial economy.</p>
+      <div style="font-family:'Syne',sans-serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Saint Sword Pvt. Ltd.</div>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('about')">About Us</a></li>
+        <li><a onclick="showPage('services')">Services</a></li>
+        <li><a onclick="showPage('products')">Products</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Capabilities</h5>
+      <ul>
+        <li><a onclick="showPage('services')">Industrial Sourcing</a></li>
+        <li><a onclick="showPage('services')">Trade Execution</a></li>
+        <li><a onclick="showPage('services')">Supply Chain</a></li>
+        <li><a onclick="showPage('services')">Market Access</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Partner With Us</h5>
+      <ul>
+        <li><a onclick="showPage('contact')">Global Manufacturers</a></li>
+        <li><a onclick="showPage('contact')">Indian Businesses</a></li>
+        <li><a onclick="showPage('contact')">EPC Partners</a></li>
+        <li><a onclick="showPage('contact')">Make an Enquiry</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Saint Sword Pvt. Ltd. All rights reserved.</p>
+    <span class="footer-reg">CIN: Applied for Registration · India</span>
+  </div>
+</footer>
+
+<script>
+  function showPage(page, e) {
+    if (e) e.preventDefault();
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const navEl = document.getElementById('nav-' + page);
+    if (navEl) navEl.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleMobile() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  function toggleCategory(el) {
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.product-category').forEach(c => c.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+
+  function submitForm() {
+    const name = document.getElementById('f-name').value;
+    const email = document.getElementById('f-email').value;
+    if (!name || !email) {
+      alert('Please fill in your name and email address.');
+      return;
+    }
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  // Scroll-based nav highlight
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(10,10,18,0.98)';
+    } else {
+      nav.style.background = 'rgba(10,10,18,0.85)';
+    }
+  });
+</script>
+</body>
+</html>
